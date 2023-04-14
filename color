@@ -1,0 +1,16 @@
+  getWordColor(word: string){
+    const colors = ['#fff', '#718061'];
+    let hash = 0;
+
+    for(let i=0; i<word.length; i++){
+      hash = word.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    const index = Math.abs(hash) % colors.length;
+    return colors[index];
+  }
+
+  getWordBackgroundColor(word: string){
+    const textColor = this.getWordColor(word);
+    return textColor === '#fff' ? '#5FA2DD' : '#E6EDDD';
+  }
